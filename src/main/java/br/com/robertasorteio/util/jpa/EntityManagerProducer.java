@@ -1,6 +1,5 @@
 package br.com.robertasorteio.util.jpa;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
@@ -8,8 +7,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.hibernate.Session;
+import org.omnifaces.cdi.Startup;
 
-@ApplicationScoped
+@Startup
 public class EntityManagerProducer {
 	
 	private EntityManagerFactory factory;
