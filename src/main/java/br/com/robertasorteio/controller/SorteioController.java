@@ -1,6 +1,7 @@
 package br.com.robertasorteio.controller;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 
@@ -8,8 +9,12 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+
 import br.com.robertasorteio.model.Participante;
+import br.com.robertasorteio.model.Sorteio;
 import br.com.robertasorteio.repository.Participantes;
+import br.com.robertasorteio.repository.Sorteios;
+import br.com.robertasorteio.util.jpa.Transactional;
 
 @Named
 @ViewScoped
@@ -19,10 +24,14 @@ public class SorteioController implements Serializable {
 	
 	@Inject
 	private Participantes participantes;
-	
 	@Inject
 	private Participante ganhador;
+	@Inject
+	private Sorteio sorteio;
+	@Inject
+	private Sorteios dao;
 	
+	@Transactional
 	public void sortear() {
 		List<Participante> listParticipante = participantes.listar();
 		int tamanho = listParticipante.size();
@@ -30,6 +39,14 @@ public class SorteioController implements Serializable {
 		int Sorteado = random.nextInt(tamanho);
 		ganhador = listParticipante.get(Sorteado);
 		System.out.println(ganhador.getNome());
+		
+		sorteio = new Sorteio();
+		sorteio.setData(LocalDateTime.now());
+		sorteio.setGanhador(ganhador);
+		sorteio.setPremio("Celular");
+		
+		dao.inserir(sorteio);
+	
 	}
 	
 	public Participante getGanhador() {

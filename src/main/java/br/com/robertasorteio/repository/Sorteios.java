@@ -11,7 +11,7 @@ public class Sorteios implements Serializable {
 	
 	private static final long serialVersionUID = -6866696652763822928L;
 	
-  @Inject
+	@Inject
 	EntityManager manager;
 	
 	public void inserir(Sorteio sorteio ) {

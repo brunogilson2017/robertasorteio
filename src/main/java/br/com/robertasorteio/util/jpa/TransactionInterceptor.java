@@ -15,7 +15,7 @@ public class TransactionInterceptor implements Serializable {
 
 	private static final long serialVersionUID = 3367519966246856057L;
 	
-  @Inject
+  	@Inject
 	private EntityManager manager;
 	
 	@AroundInvoke

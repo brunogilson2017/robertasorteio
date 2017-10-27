@@ -22,7 +22,7 @@ public class Sorteio implements Serializable {
 	private static final long serialVersionUID = -1319683823195521880L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private int id;
 	
 	private LocalDateTime data;
