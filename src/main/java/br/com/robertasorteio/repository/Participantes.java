@@ -9,27 +9,27 @@ import javax.persistence.EntityManager;
 import br.com.robertasorteio.model.Participante;
 
 public class Participantes implements Serializable {
-	
+
 	private static final long serialVersionUID = 7000719596042216797L;
-	
-  @Inject
+
+	@Inject
 	EntityManager manager;
 
 	public List<Participante> listar() {
 		List<Participante> lista = null;
 		lista = manager.createQuery("FROM Participante", Participante.class).getResultList();
-		
+
 		return lista;
 	}
-	
+
 	public void cadastrar(List<Participante> lista) {
 		for (Participante participante : lista) {
-		  manager.persist(participante);
+			manager.persist(participante);
 		}
 	}
-	
+
 	public void cadastrar(Participante participante) {
-	  manager.persist(participante);
+		manager.persist(participante);
 	}
 
 }
