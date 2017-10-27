@@ -14,10 +14,10 @@ import javax.persistence.EntityTransaction;
 public class TransactionInterceptor implements Serializable {
 
 	private static final long serialVersionUID = 3367519966246856057L;
-	
-  	@Inject
+
+	@Inject
 	private EntityManager manager;
-	
+
 	@AroundInvoke
 	public Object invoke(InvocationContext context) throws Exception {
 		EntityTransaction trx = manager.getTransaction();
@@ -29,10 +29,10 @@ public class TransactionInterceptor implements Serializable {
 				// (senão, um futuro commit, confirmaria até mesmo operações sem transação)
 				trx.begin();
 				trx.rollback();
-				
+
 				// agora sim inicia a transação
 				trx.begin();
-				
+
 				criador = true;
 			}
 
@@ -47,5 +47,5 @@ public class TransactionInterceptor implements Serializable {
 				trx.commit();
 		}
 	}
-	
+
 }

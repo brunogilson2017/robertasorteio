@@ -17,26 +17,26 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 public class Participante implements Serializable {
 
 	private static final long serialVersionUID = -6913684685104067530L;
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(length = 150, nullable = false)
 	private String nome;
-	
+
 	@Column(length = 11, nullable = false)
 	private String cpf;
-	
+
 	@Column(length = 100)
 	private String email;
-	
+
 	@Column(length = 20)
 	private String telefone;
-	
+
 	@Column(length = 50, nullable = false)
 	private String codigo;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -52,13 +52,13 @@ public class Participante implements Serializable {
 	}
 
 	public String getCpf() {
-    return cpf;
-  }
-  public void setCpf(String cpf) {
-    this.cpf = cpf;
-  }
-  
-  public String getEmail() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
@@ -78,20 +78,20 @@ public class Participante implements Serializable {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
-  }
-  
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if ((obj == null) || (getClass() != obj.getClass()))
-      return false;
-    Participante other = (Participante) obj;
-    return new EqualsBuilder().append(id, other.id).isEquals();
-  }
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if ((obj == null) || (getClass() != obj.getClass()))
+			return false;
+		Participante other = (Participante) obj;
+		return new EqualsBuilder().append(id, other.id).isEquals();
+	}
+
 }
