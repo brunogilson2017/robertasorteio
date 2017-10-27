@@ -33,20 +33,40 @@ public class SorteioController implements Serializable {
 	
 	@Transactional
 	public void sortear() {
-		List<Participante> listParticipante = participantes.listar();
+		ganhador = gerarGanhador();
+		if((ganhador.getId() != 0) && validarGanhador(ganhador)){
+			salvarSorteio(ganhador);
+		}else{
+			ganhador = new Participante();
+		}
+	}
+	
+	public Participante gerarGanhador(){
+		List<Participante> listParticipante = participantes.listarSemGanhador();
 		int tamanho = listParticipante.size();
-		Random random = new Random();
-		int Sorteado = random.nextInt(tamanho);
-		ganhador = listParticipante.get(Sorteado);
-		System.out.println(ganhador.getNome());
-		
+		System.out.println(tamanho);
+		if(tamanho > 0){
+			Random random = new Random();
+			int Sorteado = random.nextInt(tamanho);
+			ganhador = listParticipante.get(Sorteado);
+			System.out.println(ganhador.getNome());
+		}else{
+			System.out.println("ERRO : Nenhum participante disponível!");
+		}
+		return ganhador;
+	}
+	
+	public boolean validarGanhador(Participante ganhador){
+		return (dao.porGanhador(ganhador)).isEmpty();
+	}
+	
+	public void salvarSorteio(Participante ganhador){
 		sorteio = new Sorteio();
 		sorteio.setData(LocalDateTime.now());
 		sorteio.setGanhador(ganhador);
 		sorteio.setPremio("Celular");
-		
 		dao.inserir(sorteio);
-	
+		System.out.println("salvo");
 	}
 	
 	public Participante getGanhador() {

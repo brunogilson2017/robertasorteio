@@ -22,6 +22,15 @@ public class Participantes implements Serializable {
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Participante> listarSemGanhador() {
+		List<Participante> lista = null;
+		lista = manager.createNativeQuery("SELECT p.* FROM Participante p LEFT JOIN Sorteio s"
+				+ " ON p.id = s.idParticipante WHERE s.id is null", Participante.class).getResultList();
+		
+		return lista;
+	}
+	
 	public void cadastrar(List<Participante> lista) {
 		for (Participante participante : lista) {
 		  manager.persist(participante);
