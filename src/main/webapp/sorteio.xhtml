@@ -7,9 +7,18 @@
 <h:head></h:head> 
 <body> 
 	<h:form>
-		<h1>SORTEIO</h1>
+		<div align="center">
+			<h1>SORTEIO</h1>
+			<h:commandButton action="#{sorteioController.sortear()}" type="submit" value="Sortear">
+			</h:commandButton>
+			
+			<H1>
+				<h:outputText value="Ganhador" />
+				<br/>
+				<h:outputText value="#{sorteioController.ganhador.nome}" />
+			</H1>
 		
-		<h:commandButton action="#{sorteioBean.sortear()}" value="Sortear" />
+		</div>
 	
 	</h:form>
 </body> 

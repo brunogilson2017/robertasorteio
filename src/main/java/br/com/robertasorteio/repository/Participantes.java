@@ -21,8 +21,24 @@ public class Participantes implements Serializable {
 		manager.persist(participante);
 	}
 	
+<<<<<<< HEAD
 	public Participante porId(int id) {
 		return manager.find(Participante.class, id);
+=======
+	@SuppressWarnings("unchecked")
+	public List<Participante> listarSemGanhador() {
+		List<Participante> lista = null;
+		lista = manager.createNativeQuery("SELECT p.* FROM Participante p LEFT JOIN Sorteio s"
+				+ " ON p.id = s.idParticipante WHERE s.id is null", Participante.class).getResultList();
+		
+		return lista;
+	}
+	
+	public void cadastrar(List<Participante> lista) {
+		for (Participante participante : lista) {
+			manager.persist(participante);
+		}
+>>>>>>> 7323421f7ffd370e9df50b3b7b1dfe7c50b89810
 	}
 	
 	public List<Participante> todos() {
