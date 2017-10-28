@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.robertasorteio.model.Participante;
+import br.com.robertasorteio.util.jpa.Transactional;
 
 public class Participantes implements Serializable {
 
@@ -15,21 +16,18 @@ public class Participantes implements Serializable {
 	@Inject
 	EntityManager manager;
 
-	public List<Participante> listar() {
-		List<Participante> lista = null;
-		lista = manager.createQuery("FROM Participante", Participante.class).getResultList();
-
-		return lista;
-	}
-
-	public void cadastrar(List<Participante> lista) {
-		for (Participante participante : lista) {
-			manager.persist(participante);
-		}
-	}
-
-	public void cadastrar(Participante participante) {
+	@Transactional
+	public void inserir(Participante participante) {
 		manager.persist(participante);
+	}
+	
+	public Participante porId(int id) {
+		return manager.find(Participante.class, id);
+	}
+	
+	public List<Participante> todos() {
+		List<Participante> participantes = manager.createQuery("FROM Participante", Participante.class).getResultList();
+		return participantes;
 	}
 
 }

@@ -34,7 +34,7 @@ public class Participante implements Serializable {
 	@Column(length = 20)
 	private String telefone;
 
-	@Column(length = 50, nullable = false)
+	@Column(length = 50)
 	private String codigo;
 
 	public int getId() {

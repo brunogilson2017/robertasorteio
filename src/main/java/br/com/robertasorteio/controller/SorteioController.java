@@ -24,7 +24,7 @@ public class SorteioController implements Serializable {
 	private Participante ganhador;
 	
 	public void sortear() {
-		List<Participante> listParticipante = participantes.listar();
+		List<Participante> listParticipante = participantes.todos();
 		int tamanho = listParticipante.size();
 		Random random = new Random();
 		int Sorteado = random.nextInt(tamanho);
