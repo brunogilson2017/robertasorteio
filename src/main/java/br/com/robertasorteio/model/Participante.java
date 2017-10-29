@@ -36,6 +36,8 @@ public class Participante implements Serializable {
 
 	@Column(length = 50)
 	private String codigo;
+	
+	private boolean cadastrado;
 
 	public int getId() {
 		return id;
@@ -79,6 +81,12 @@ public class Participante implements Serializable {
 		this.codigo = codigo;
 	}
 
+	public boolean isCadastrado() {
+		return cadastrado;
+	}
+	public void setCadastrado(boolean cadastrado) {
+		this.cadastrado = cadastrado;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

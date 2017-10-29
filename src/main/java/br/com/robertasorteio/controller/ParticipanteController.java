@@ -16,6 +16,7 @@ import org.primefaces.model.UploadedFile;
 
 import br.com.robertasorteio.model.Participante;
 import br.com.robertasorteio.repository.Participantes;
+import br.com.robertasorteio.util.jpa.Transactional;
 import br.com.robertasorteio.util.jsf.FacesUtil;
 
 @Named
@@ -26,6 +27,10 @@ public class ParticipanteController implements Serializable {
 
 	@Inject
 	private Participantes participantes;
+	
+	private Participante participante;
+	
+	private String codigo = "";
 
 	/**
 	 * Ler o arquivo excel e salva os dados do Participante
@@ -94,5 +99,39 @@ public class ParticipanteController implements Serializable {
 
 		System.out.println("Finalizando rotina...");
 	}
+	
+	@Transactional
+	public void inscricao(){
+		
+		participante = participantes.porCodigo(codigo);
+		
+		if(participante != null){
+			if(!participante.isCadastrado()){
+				participante.setCadastrado(true);
+				participantes.atualizar(participante);
+				codigo = "";
+				FacesUtil.addInfoMessage(participante.getNome() + " cadastrado no sorteio.");
+			}else{
+				FacesUtil.addErrorMessage("Participante já cadastrado no sorteio!");
+			}
+		}
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public Participante getParticipante() {
+		return participante;
+	}
+
+	public void setParticipante(Participante participante) {
+		this.participante = participante;
+	}
+	
 	
 }
