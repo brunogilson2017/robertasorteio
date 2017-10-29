@@ -33,9 +33,6 @@ public class SorteioController implements Serializable {
 	
 	@Transactional
 	public void sortear() {
-<<<<<<< HEAD
-		List<Participante> listParticipante = participantes.todos();
-=======
 		ganhador = gerarGanhador();
 		if((ganhador.getId() != 0) && validarGanhador(ganhador)){
 			salvarSorteio(ganhador);
@@ -46,7 +43,6 @@ public class SorteioController implements Serializable {
 	
 	public Participante gerarGanhador(){
 		List<Participante> listParticipante = participantes.listarSemGanhador();
->>>>>>> 7323421f7ffd370e9df50b3b7b1dfe7c50b89810
 		int tamanho = listParticipante.size();
 		System.out.println(tamanho);
 		if(tamanho > 0){
