@@ -9,7 +9,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 import br.com.robertasorteio.model.Participante;
 import br.com.robertasorteio.model.Sorteio;
 import br.com.robertasorteio.repository.Participantes;
@@ -24,19 +23,21 @@ public class SorteioController implements Serializable {
 	
 	@Inject
 	private Participantes participantes;
+	
 	@Inject
 	private Participante ganhador;
+	
 	@Inject
 	private Sorteio sorteio;
+	
 	@Inject
 	private Sorteios dao;
 	
 	@Transactional
 	public void sortear() {
-<<<<<<< HEAD
 		List<Participante> listParticipante = participantes.todos();
-=======
 		ganhador = gerarGanhador();
+		
 		if((ganhador.getId() != 0) && validarGanhador(ganhador)){
 			salvarSorteio(ganhador);
 		}else{
@@ -46,7 +47,6 @@ public class SorteioController implements Serializable {
 	
 	public Participante gerarGanhador(){
 		List<Participante> listParticipante = participantes.listarSemGanhador();
->>>>>>> 7323421f7ffd370e9df50b3b7b1dfe7c50b89810
 		int tamanho = listParticipante.size();
 		System.out.println(tamanho);
 		if(tamanho > 0){
