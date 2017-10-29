@@ -6,10 +6,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
+	<ui:include src="/menu.xhtml" />
 </h:head> 
 <body> 
-	
 	<script type="text/javascript">
 		function envia(e){
 			//alert(e.keycode);
@@ -19,16 +18,17 @@
 		}
 	
 	</script>
-	
-	<h1>Cadastro Sorteio</h1>
-	<br />
-	<br />
-	<br />
-	<h:form id="frm1" >
-		<p:messages closable="true"/>
-		<h:inputText value="#{participanteController.codigo}" />
-		<h:commandButton  action="#{participanteController.inscricao()}" value="cadastrar" />
-	</h:form>
+	<div align="center">
+		<h1>Cadastro Sorteio</h1>
+		<br />
+		<br />
+		<br />
+		<h:form id="frm1" onsubmit="#{participanteController.inscricao()}">
+			<p:messages closable="true"  autoUpdate="true"/>
+			<h:outputText value="Código" style="font-size:20px"/>
+			<h:inputText value="#{participanteController.codigo}" onkeypress="return envia(event);"/>
+		</h:form>
+	</div>
 
 </body> 
 </html>

@@ -28,6 +28,8 @@ public class ParticipanteController implements Serializable {
 	@Inject
 	private Participantes participantes;
 	
+	private Participante participante;
+	
 	private String codigo = "";
 
 	/**
@@ -101,14 +103,14 @@ public class ParticipanteController implements Serializable {
 	@Transactional
 	public void inscricao(){
 		
-		Participante participante = participantes.porCodigo(codigo);
+		participante = participantes.porCodigo(codigo);
 		
 		if(participante != null){
 			if(!participante.isCadastrado()){
 				participante.setCadastrado(true);
 				participantes.atualizar(participante);
-				System.out.println("Participante cadastrado no sorteio.");
-				FacesUtil.addInfoMessage("Participante cadastrado no sorteio.");
+				codigo = "";
+				FacesUtil.addInfoMessage(participante.getNome() + " cadastrado no sorteio.");
 			}else{
 				FacesUtil.addErrorMessage("Participante já cadastrado no sorteio!");
 			}
@@ -122,5 +124,14 @@ public class ParticipanteController implements Serializable {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
+
+	public Participante getParticipante() {
+		return participante;
+	}
+
+	public void setParticipante(Participante participante) {
+		this.participante = participante;
+	}
+	
 	
 }
