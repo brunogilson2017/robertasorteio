@@ -35,9 +35,13 @@ public class SorteioController implements Serializable {
 	
 	@Transactional
 	public void sortear() {
-		List<Participante> listParticipante = participantes.todos();
 		ganhador = gerarGanhador();
-		
+		try {
+			//delay para a tela de loading
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		if((ganhador.getId() != 0) && validarGanhador(ganhador)){
 			salvarSorteio(ganhador);
 		}else{
