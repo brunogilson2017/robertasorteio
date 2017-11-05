@@ -11,19 +11,23 @@
 	<ui:include src="/menu.xhtml" />
 </h:head>
 <h:body>
-
 	<h:form prependId="false">
-		<p:messages closable="true" />
+		<p:messages autoUpdate="true" closable="true" />
 
 		<h1>Upload do arquivo excel preenchido.</h1>
 		<p:fileUpload fileUploadListener="#{participanteController.fileUpload}"
-			mode="advanced" update="@form" sizeLimit="204800"
-			fileLimit="3" allowTypes="/(\.|\/)(xls?x)$/" label="arquivo"
-			uploadLabel="enviar" cancelLabel="cancelar"
-			fileLimitMessage="Limite de tentativas excedido, recarregue a página."
+			mode="advanced" update="@form" sizeLimit="204800" multiple="true"
+			fileLimit="3" allowTypes="/(\.|\/)(xls?x)$/" label="Arquivo"
+			uploadLabel="Enviar" cancelLabel="Cancelar"
+			fileLimitMessage="Só é possível escolher 3 arquivos por vez."
 			invalidFileMessage="Só é permitido arquivo com a extensão (.xls ou .xlsx)."
-			invalidSizeMessage="Tamanho excedido(200kb)." />
+			invalidSizeMessage="Tamanho excedido(200kb)."
+			onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()" />
+		
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false"
+				resizable="false" showHeader="false" styleClass="modal-transparente">
+		    <p:graphicImage library="img" name="loading.gif" width="100" />
+		</p:dialog>
 	</h:form>
-
 </h:body>
 </html>

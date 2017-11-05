@@ -25,20 +25,34 @@ public class Participante implements Serializable {
 	@Column(length = 150, nullable = false)
 	private String nome;
 
-	@Column(length = 11, nullable = false)
-	private String cpf;
-
-	@Column(length = 100)
+	@Column(length = 100, nullable = false, unique = true)
 	private String email;
-
-	@Column(length = 20)
-	private String telefone;
-
-	@Column(length = 50)
-	private String codigo;
 	
-	private boolean cadastrado;
-
+	private String logradouro;
+	
+	@Column(length = 20)
+	private String numero;
+	
+	private String complemento;
+	
+	@Column(length = 100)
+	private String bairro;
+	
+	@Column(length = 100)
+	private String cidade;
+	
+	@Column(length = 5)
+	private String uf;
+	
+	@Column(length = 15)
+	private String cep;
+	
+	@Column(length = 50)
+	private String pais;
+	
+	@Column(nullable = false)
+	private boolean participandoSorteio;
+	
 	public int getId() {
 		return id;
 	}
@@ -53,13 +67,6 @@ public class Participante implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -67,26 +74,69 @@ public class Participante implements Serializable {
 		this.email = email;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public String getLogradouro() {
+		return logradouro;
 	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
-	public boolean isCadastrado() {
-		return cadastrado;
+	public String getNumero() {
+		return numero;
 	}
-	public void setCadastrado(boolean cadastrado) {
-		this.cadastrado = cadastrado;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public boolean isParticipandoSorteio() {
+		return participandoSorteio;
+	}
+	public void setParticipandoSorteio(boolean participandoSorteio) {
+		this.participandoSorteio = participandoSorteio;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

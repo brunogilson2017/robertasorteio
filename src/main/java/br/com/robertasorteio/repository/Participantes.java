@@ -22,10 +22,20 @@ public class Participantes implements Serializable {
 		manager.persist(participante);
 	}
 	
+	@Transactional
+	public void atualizar(Participante participante) {
+		manager.merge(participante);
+	}
+	
 	public Participante porId(int id) {
 		return manager.find(Participante.class, id);
 	}	
-		
+	
+	public List<Participante> todos() {
+		List<Participante> participantes = manager.createQuery("FROM Participante", Participante.class).getResultList();
+		return participantes;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Participante> listarSemGanhador() {
 		List<Participante> lista = null;
@@ -35,31 +45,17 @@ public class Participantes implements Serializable {
 		return lista;
 	}
 	
-	public void cadastrar(List<Participante> lista) {
-		for (Participante participante : lista) {
-			manager.persist(participante);
-		}
-	}
-	
-	public List<Participante> todos() {
-		List<Participante> participantes = manager.createQuery("FROM Participante", Participante.class).getResultList();
-		return participantes;
-	}
-	
-	public Participante porCodigo(String codigo){
-		Participante participante;
-		try {
-			participante = manager.createQuery("FROM Participante WHERE codigo = :codigo", Participante.class)
-					.setParameter("codigo", codigo).getSingleResult();
-		} catch (NoResultException e) {
-			participante = null;
-		}
-		return participante;
-		
-	}
-	
-	public void atualizar(Participante participante){
-		manager.merge(participante);
-	}
+	public Participante porEmail(String email) {
+		Participante participante = null;
 
+		try {
+			participante = manager.createQuery("FROM Participante WHERE LOWER(email) = :email", Participante.class)
+					.setParameter("email", email.toLowerCase()).getSingleResult();
+		} catch (NoResultException e) {
+			// nenhum participante encontrado com o e-mail informado.
+		}
+
+		return participante;
+	}
+	
 }
