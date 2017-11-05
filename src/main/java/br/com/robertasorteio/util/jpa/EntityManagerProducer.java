@@ -11,7 +11,6 @@ import org.hibernate.Session;
 import org.omnifaces.cdi.Startup;
 
 @Startup
-@Named(value="entityManagerProducer")
 public class EntityManagerProducer {
 	
 	private EntityManagerFactory factory;

@@ -8,6 +8,10 @@
 		<session-timeout>30</session-timeout>
 	</session-config>
 	
+	<welcome-file-list>
+		<welcome-file>participante.xhtml</welcome-file>
+	</welcome-file-list>
+	
 	<!-- Enable Weld CDI, also needs META-INF/context.xml entry -->
 	<listener>
 		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>

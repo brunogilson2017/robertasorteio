@@ -2,4 +2,27 @@
 .ui-widget-header{
 	background: #ffffff;
 }
+body {
+	
+}
 
+.fundo-ganhador{
+	background:#87CEEB;
+}
+
+.bimage{
+	background-image:url(/robertasorteio/resources/img/conescap.jpg);
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 100vh;
+	padding: 0;
+	background-position: center center;
+	background-size: 100% 100%;
+	background-attachment:  fixed;
+	
+}
+
+.ui-button{
+	background: rgba(157, 244, 253, 0.05);
+}
+     

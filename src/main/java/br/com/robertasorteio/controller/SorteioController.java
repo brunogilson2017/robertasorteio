@@ -52,12 +52,11 @@ public class SorteioController implements Serializable {
 	public Participante gerarGanhador(){
 		List<Participante> listParticipante = participantes.listarSemGanhador();
 		int tamanho = listParticipante.size();
-		System.out.println(tamanho);
 		if(tamanho > 0){
 			Random random = new Random();
 			int Sorteado = random.nextInt(tamanho);
 			ganhador = listParticipante.get(Sorteado);
-			System.out.println(ganhador.getNome());
+//			System.out.println(ganhador.getNome());
 		}else{
 			System.out.println("ERRO : Nenhum participante disponível!");
 		}
