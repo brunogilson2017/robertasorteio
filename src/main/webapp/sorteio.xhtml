@@ -7,18 +7,18 @@
 
 <h:head>
 	<link rel="Stylesheet" type="text/css" href="resources/css/main.css"/>
-	<ui:include src="/menu.xhtml" />
 </h:head> 
-<h:body style="background: url('../resources/img/conescap.jpg')"> 
+<h:body styleClass="bimage"  > 
 
 	<h:form>
-		
-		<div align="center" style="margin-top:20px">
-			<h1>SORTEIO</h1>
+		<div align="center">
+<!-- 			<h:graphicImage value="/resources/img/conescap.jpg" height="700px" width="1400px" /> -->
+			<br />
 			<p:commandButton action="#{sorteioController.sortear()}" type="submit" value="Sortear"
 					onclick="PF('loading').show()" oncomplete="PF('loading').hide(); PF('modalGanhador').show()"
 					update="modalGanhador">
 			</p:commandButton>
+			<p:commandButton action="participante.xhtml" value="Upload" />
 			
 			
 		
@@ -28,7 +28,8 @@
 			<h:graphicImage value="/resources/img/EATfJf4.gif" />
 		</p:dialog>
 		
-		<p:dialog widgetVar="modalGanhador" id="modalGanhador" width="80%" height="80%" resizable="false">
+		<p:dialog widgetVar="modalGanhador" id="modalGanhador" width="80%" height="80%" resizable="false"
+				styleClass="">
 			<div align="center">
 				<H1>
 					<b>
