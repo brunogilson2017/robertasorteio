@@ -7,22 +7,31 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+	<h:outputStylesheet library="css" name="main.css" />
+	
 	<title>:: Cadastro de Participantes ::</title>
-	<ui:include src="/menu.xhtml" />
 </h:head>
 <h:body>
 	<h:form prependId="false">
-		<p:messages autoUpdate="true" closable="true" />
-
-		<h1>Upload do arquivo excel preenchido.</h1>
-		<p:fileUpload fileUploadListener="#{participanteController.fileUpload}"
-			mode="advanced" update="@form" sizeLimit="204800" multiple="true"
-			fileLimit="3" allowTypes="/(\.|\/)(xls?x)$/" label="Arquivo"
-			uploadLabel="Enviar" cancelLabel="Cancelar"
-			fileLimitMessage="Só é possível escolher 3 arquivos por vez."
-			invalidFileMessage="Só é permitido arquivo com a extensão (.xls ou .xlsx)."
-			invalidSizeMessage="Tamanho excedido(200kb)."
-			onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()" />
+		<h:graphicImage library="img" name="10.png" styleClass="img-fundo-fenacon" />	
+	
+		<div class="cadastro-excel">
+			<p:messages autoUpdate="true" closable="true" />
+			
+			<h1>Upload do arquivo excel preenchido</h1>
+			
+			<p:fileUpload fileUploadListener="#{participanteController.fileUpload}"
+				mode="advanced" update="@form" sizeLimit="204800"
+				fileLimit="1" allowTypes="/(\.|\/)(xls|xlsx)$/" label="Arquivo"
+				uploadLabel="Enviar" cancelLabel="Cancelar"
+				fileLimitMessage="Só é possível escolher 1 arquivos por vez."
+				invalidFileMessage="Só é permitido arquivo com a extensão (.xls ou .xlsx)."
+				invalidSizeMessage="Tamanho excedido(200kb)."
+				onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()" />
+				
+			<p:commandButton action="sorteio.xhtml?faces-redirect=true" value="Sortear" />
+		</div>
 		
 		<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false"
 				resizable="false" showHeader="false">
