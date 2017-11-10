@@ -12,7 +12,6 @@
 
 	<h:form>
 		<div align="center">
-<!-- 			<h:graphicImage value="/resources/img/conescap.jpg" height="700px" width="1400px" /> -->
 			<br />
 			<p:commandButton action="#{sorteioController.sortear()}" type="submit" value="Sortear"
 					onclick="PF('loading').show()" oncomplete="PF('loading').hide(); PF('modalGanhador').show()"
@@ -28,8 +27,7 @@
 			<h:graphicImage value="/resources/img/EATfJf4.gif" />
 		</p:dialog>
 		
-		<p:dialog widgetVar="modalGanhador" id="modalGanhador" width="80%" height="80%" resizable="false"
-				styleClass="">
+		<p:dialog widgetVar="modalGanhador" id="modalGanhador" width="80%" height="80%" resizable="false">
 			<div align="center">
 				<H1>
 					<b>
