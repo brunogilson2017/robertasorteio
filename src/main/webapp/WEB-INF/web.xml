@@ -9,7 +9,7 @@
 	</session-config>
 	
 	<welcome-file-list>
-		<welcome-file>participante.xhtml</welcome-file>
+		<welcome-file>sorteio.xhtml</welcome-file>
 	</welcome-file-list>
 	
 	<!-- Enable Weld CDI, also needs META-INF/context.xml entry -->
