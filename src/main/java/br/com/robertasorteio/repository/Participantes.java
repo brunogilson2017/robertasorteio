@@ -39,7 +39,7 @@ public class Participantes implements Serializable {
 	@SuppressWarnings("unchecked")
 	public List<Participante> listarSemGanhador() {
 		List<Participante> lista = null;
-		lista = manager.createNativeQuery("SELECT p.* FROM Participante p LEFT JOIN Sorteio s"
+		lista = manager.createNativeQuery("SELECT p.* FROM participante p LEFT JOIN sorteio s"
 				+ " ON p.id = s.idParticipante WHERE s.id is null and p.participandoSorteio = true", Participante.class).getResultList();
 		
 		return lista;
